@@ -3,24 +3,23 @@ import sbt._
 
 object Dependencies {
   object Versions {
-    lazy val cats = "2.7.0"
-    lazy val `cats-effect` = "3.3.5"
+    lazy val cats = "2.8.0"
+    lazy val `cats-effect` = "3.3.14"
     lazy val circe = "0.14.1"
-    lazy val fs2 = "3.2.4"
+    lazy val fs2 = "3.3.0"
     lazy val http4s = "0.23.10"
     lazy val log4cats = "2.5.0"
     lazy val skunk = "0.2.3"
-    lazy val logback = "1.2.10"
+    lazy val logback = "1.4.4"
     lazy val ciris = "2.3.2"
     lazy val refined = "0.10.1"
     lazy val tsec = "0.4.0"
     lazy val redis4cats = "1.1.1"
-    lazy val monocleVersion = "3.1.0"
+    lazy val monocle = "3.1.0"
     lazy val `cats-retry` = "3.1.0"
     lazy val newtype = "0.4.4"
     lazy val derevo = "0.13.0"
     lazy val sttp = "3.7.2"
-    lazy val monocle = "3.1.0"
     lazy val `cats-tagless` = "0.14.0"
     lazy val `mu-rpc` = "0.29.0"
     lazy val `http4s-jwt-auth` = "1.0.0"
@@ -30,7 +29,7 @@ object Dependencies {
     lazy val enumeratum = "1.7.0"
 
     lazy val weaver = "0.8.0"
-    lazy val `test-container` = "1.17.3"
+    lazy val `test-container` = "1.17.4"
     lazy val postgresql = "42.5.0"
   }
 
@@ -142,14 +141,6 @@ object Dependencies {
       override def all: Seq[ModuleID] = Seq(service, server, fs2)
     }
 
-    object MEOW extends LibGroup {
-      private def meowMtl(artifact: String): ModuleID =
-        "com.olegpy" %% artifact % Versions.`meow-mtl`
-
-      lazy val core: ModuleID = meowMtl("meow-mtl-core")
-      override def all: Seq[ModuleID] = Seq(core)
-    }
-
     object Enumeratum extends LibGroup {
       private def enumeratum(artifact: String): ModuleID =
         "com.beachape" %% artifact % Versions.enumeratum
@@ -177,6 +168,7 @@ object Dependencies {
         postgresql,
       )
     }
+    lazy val `meow-mtl` = "com.olegpy"                 %% "meow-mtl-core" % Versions.`meow-mtl`
     lazy val fs2 = "co.fs2"                            %% "fs2-core"      % Versions.fs2
     lazy val newtype = "io.estatico"                   %% "newtype"       % Versions.newtype
     lazy val `tsec-pass-hasher` = "io.github.jmcardon" %% "tsec-password" % Versions.tsec
@@ -184,7 +176,6 @@ object Dependencies {
     lazy val `http4s-jwt-auth` = "dev.profunktor" %% "http4s-jwt-auth" % Versions.`http4s-jwt-auth`
     lazy val mailer = "javax.mail"                 % "mail"            % Versions.mailer
     lazy val izumi = "dev.zio"                    %% "izumi-reflect"   % Versions.izumi
-
     lazy val `cats-tagless-macros` =
       "org.typelevel" %% "cats-tagless-macros" % Versions.`cats-tagless`
   }
