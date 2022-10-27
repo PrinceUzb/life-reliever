@@ -1,3 +1,5 @@
+import Dependencies.Libraries
+
 ThisBuild / scalaVersion := "2.13.10"
 
 name := "life-reliever"
@@ -14,7 +16,16 @@ lazy val root = project
 lazy val common = project
   .in(file("common"))
   .settings(
-    name := "common"
+    name := "common",
+    libraryDependencies ++=
+      Libraries.Derevo.all ++
+        Libraries.Refined.all ++
+        Libraries.Circe.all ++
+        Libraries.Ciris.all ++
+        Libraries.Enumeratum.all ++
+        Seq(
+          Libraries.newtype
+        ),
   )
 
 lazy val integrations = project
