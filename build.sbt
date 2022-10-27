@@ -19,12 +19,14 @@ lazy val common = project
     name := "common",
     libraryDependencies ++=
       Libraries.Derevo.all ++
+        Libraries.Cats.all ++
         Libraries.Refined.all ++
         Libraries.Circe.all ++
         Libraries.Ciris.all ++
         Libraries.Enumeratum.all ++
         Seq(
-          Libraries.newtype
+          Libraries.newtype,
+          Libraries.`monocle-core`,
         ),
   )
 
