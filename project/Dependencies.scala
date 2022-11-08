@@ -25,8 +25,10 @@ object Dependencies {
     lazy val `http4s-jwt-auth` = "1.0.0"
     lazy val `meow-mtl` = "0.5.0"
     lazy val mailer = "1.4.7"
-    lazy val izumi = "2.2.0"
+    lazy val izumi = "2.2.1"
     lazy val enumeratum = "1.7.0"
+    lazy val flyway = "9.6.0"
+    lazy val `organize-imports` = "0.6.0"
 
     lazy val weaver = "0.8.0"
     lazy val `test-container` = "1.17.4"
@@ -141,6 +143,10 @@ object Dependencies {
       override def all: Seq[ModuleID] = Seq(service, server, fs2)
     }
 
+    object Flyway {
+      val `flyway-core` = "org.flywaydb" % "flyway-core" % Versions.flyway
+    }
+
     object Enumeratum extends LibGroup {
       private def enumeratum(artifact: String): ModuleID =
         "com.beachape" %% artifact % Versions.enumeratum
@@ -178,5 +184,8 @@ object Dependencies {
     lazy val izumi = "dev.zio"                    %% "izumi-reflect"   % Versions.izumi
     lazy val `cats-tagless-macros` =
       "org.typelevel" %% "cats-tagless-macros" % Versions.`cats-tagless`
+
+    lazy val `organize-imports` =
+      "com.github.liancheng" %% "organize-imports" % Versions.`organize-imports`
   }
 }

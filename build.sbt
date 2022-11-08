@@ -4,7 +4,7 @@ ThisBuild / scalaVersion := "2.13.10"
 
 name := "life-reliever"
 
-lazy val root = project
+lazy val `life-reliever` = project
   .in(file("."))
   .aggregate(
     integrations,
@@ -19,6 +19,7 @@ lazy val common = project
     name := "common",
     libraryDependencies ++=
       Libraries.Derevo.all ++
+        Libraries.Logging.all ++
         Libraries.Cats.all ++
         Libraries.Refined.all ++
         Libraries.Circe.all ++
@@ -51,5 +52,21 @@ lazy val services = project
 lazy val `test-tools` = project
   .in(file("test"))
   .settings(
-    name := "test-tools"
+    name := "test-tools",
+    libraryDependencies ++=
+      Libraries.Testing.all ++
+        Libraries.Http4s.all,
   )
+
+addCommandAlias(
+  "styleCheck",
+  "all scalafmtSbtCheck; scalafmtCheckAll; Test / compile; scalafixAll --check",
+)
+
+Global / lintUnusedKeysOnLoad := false
+Global / onChangedBuildSource := ReloadOnSourceChanges
+
+ThisBuild / scalafixDependencies += Dependencies.Libraries.`organize-imports`
+ThisBuild / scalafixScalaBinaryVersion := scalaBinaryVersion.value
+ThisBuild / semanticdbEnabled          := true
+ThisBuild / semanticdbVersion          := scalafixSemanticdb.revision
