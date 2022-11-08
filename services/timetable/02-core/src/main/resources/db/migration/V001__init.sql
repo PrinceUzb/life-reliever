@@ -2,7 +2,7 @@ CREATE SCHEMA IF NOT EXISTS timetable;
 CREATE TABLE IF NOT EXISTS timetable.academy_kind
 (
     id      UUID PRIMARY KEY,
-    name    VARCHAR NOT NULL,
+    name    VARCHAR NOT NULL UNIQUE,
     deleted BOOLEAN NOT NULL DEFAULT false
 );
 
@@ -14,7 +14,7 @@ INSERT INTO timetable.academy_kind VALUES
 CREATE TABLE IF NOT EXISTS timetable.academy
 (
     id      UUID PRIMARY KEY,
-    name    VARCHAR NOT NULL,
+    name    VARCHAR NOT NULL UNIQUE,
     kind UUID    NOT NULL
             CONSTRAINT fk_academy_kind REFERENCES timetable.academy_kind (id) ON UPDATE CASCADE ON DELETE NO ACTION,
     deleted BOOLEAN NOT NULL DEFAULT false
