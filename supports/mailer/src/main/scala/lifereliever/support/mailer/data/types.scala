@@ -8,6 +8,7 @@ import eu.timepit.refined.cats._
 import eu.timepit.refined.types.string.NonEmptyString
 import io.circe.refined._
 import io.estatico.newtype.macros.newtype
+
 import lifereliever.utils.configDecoder
 
 object types {

@@ -4,6 +4,7 @@ import cats.implicits.catsSyntaxTuple6Parallel
 import ciris._
 import eu.timepit.refined.types.all.SystemPortNumber
 import io.circe.refined._
+
 import lifereliever.EmailAddress
 import lifereliever.support.mailer.data.types.Host
 import lifereliever.support.mailer.data.types.Password

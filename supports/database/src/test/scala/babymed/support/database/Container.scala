@@ -1,10 +1,15 @@
 package babymed.support.database
 
-import lifereliever.support.database.{Migrations, MigrationsConfig}
+import cats.effect.IO
+import cats.effect.Resource
 import org.testcontainers.containers.PostgreSQLContainer
 import org.testcontainers.utility.DockerImageName
 import org.typelevel.log4cats.SelfAwareStructuredLogger
 import org.typelevel.log4cats.noop.NoOpLogger
+import weaver.scalacheck.CheckConfig
+
+import lifereliever.support.database.Migrations
+import lifereliever.support.database.MigrationsConfig
 trait Container {
   def schemaName: String
   def migrationLocation: Option[String] = None

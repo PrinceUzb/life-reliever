@@ -79,7 +79,11 @@ class ServiceDerivationMacro(val c: blackbox.Context) {
       case _ => c.abort(c.enclosingPosition, "@service can only be used on traits")
     }
 
-    if (sys.props.exists { case (key, value) => key == "lifereliever.service.macro" && value == "true" })
+    if (
+        sys.props.exists {
+          case (key, value) => key == "lifereliever.service.macro" && value == "true"
+        }
+    )
       c.info(c.enclosingPosition, showCode(result.tree), force = true)
 
     result
@@ -163,7 +167,7 @@ class ServiceDerivationMacro(val c: blackbox.Context) {
 
   /** Generates the client methods. */
   def generateServiceClientMethods(
-      serviceMethods: List[(TermName, List[List[ValDef]], Tree)],
+      serviceMethods: List[(TermName, List[List[ValDef]], Tree)]
     ): Seq[Tree] =
     serviceMethods.zipWithIndex.map {
       case ((name, paramss, rtpe), idx) =>
@@ -219,7 +223,7 @@ class ServiceDerivationMacro(val c: blackbox.Context) {
 
   /** Generates the handler methods. */
   def generateServiceHandlerMethods(
-      serviceMethods: List[(TermName, List[List[ValDef]], Tree)],
+      serviceMethods: List[(TermName, List[List[ValDef]], Tree)]
     ): List[Tree] =
     serviceMethods.zipWithIndex.map {
       case ((name, paramss, rtpe), idx) =>

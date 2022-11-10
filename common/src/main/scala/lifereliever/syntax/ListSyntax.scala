@@ -2,6 +2,7 @@ package lifereliever.syntax
 
 import cats.implicits.catsSyntaxTuple2Semigroupal
 import eu.timepit.refined.types.numeric.NonNegInt
+
 import lifereliever.syntax.refined.commonSyntaxAutoUnwrapV
 
 trait ListSyntax {

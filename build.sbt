@@ -57,6 +57,7 @@ lazy val `test-tools` = project
       Libraries.Testing.all ++
         Libraries.Http4s.all,
   )
+  .dependsOn(common)
 
 addCommandAlias(
   "styleCheck",

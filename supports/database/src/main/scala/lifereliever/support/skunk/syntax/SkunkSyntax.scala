@@ -4,11 +4,12 @@ import cats.effect.Concurrent
 import cats.effect.MonadCancel
 import cats.effect.Resource
 import cats.implicits._
-import lifereliever.syntax.refined.commonSyntaxAutoUnwrapV
 import eu.timepit.refined.types.numeric.NonNegInt
 import skunk._
 import skunk.codec.numeric.int4
 import skunk.implicits._
+
+import lifereliever.syntax.refined.commonSyntaxAutoUnwrapV
 
 trait SkunkSyntax {
   implicit def skunkSyntaxCommandOps[A](cmd: Command[A]): CommandOps[A] =

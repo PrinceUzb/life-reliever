@@ -4,10 +4,11 @@ import java.io.ByteArrayInputStream
 import java.io.InputStream
 import java.nio.charset.StandardCharsets
 
-import lifereliever.syntax.all._
 import io.circe.Decoder
 import io.circe.Encoder
 import io.grpc.MethodDescriptor
+
+import lifereliever.syntax.all._
 
 trait MarshallerSyntax {
   implicit def codec[T: Encoder: Decoder]: MethodDescriptor.Marshaller[T] =

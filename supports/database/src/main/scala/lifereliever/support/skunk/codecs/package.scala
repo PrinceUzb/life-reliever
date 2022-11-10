@@ -1,14 +1,17 @@
 package lifereliever.support.skunk
 
+import java.time.ZonedDateTime
+
+import eu.timepit.refined.types.string.NonEmptyString
+import skunk.Codec
+import skunk.codec.all.timestamptz
+import skunk.codec.all.uuid
+import skunk.codec.all.varchar
+
 import lifereliever.EmailAddress
 import lifereliever.OnlyDigits
 import lifereliever.effects.IsUUID
 import lifereliever.syntax.refined.commonSyntaxAutoRefineV
-import eu.timepit.refined.types.string.NonEmptyString
-import skunk.Codec
-import skunk.codec.all.{timestamptz, uuid, varchar}
-
-import java.time.ZonedDateTime
 
 package object codecs {
   def identification[A: IsUUID]: Codec[A] = uuid.imap[A](IsUUID[A].uuid.get)(IsUUID[A].uuid.apply)

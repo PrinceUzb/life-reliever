@@ -6,6 +6,7 @@ import java.time.LocalDateTime
 import java.time.ZonedDateTime
 
 import cats.effect._
+
 import lifereliever.syntax.javaTime._
 
 trait Calendar[F[_]] {

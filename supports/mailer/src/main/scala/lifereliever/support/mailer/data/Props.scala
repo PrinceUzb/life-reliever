@@ -3,12 +3,13 @@ package lifereliever.support.mailer.data
 import scala.concurrent.duration.DurationInt
 import scala.concurrent.duration.FiniteDuration
 
-import Props._
 import eu.timepit.refined.types.all.SystemPortNumber
+
+import lifereliever.support.mailer.data.Props._
 import lifereliever.support.mailer.data.types.Host
 import lifereliever.support.mailer.data.types.Protocol
+import lifereliever.support.mailer.data.types.Protocol.Smtp
 import lifereliever.syntax.refined.commonSyntaxAutoUnwrapV
-import types.Protocol.Smtp
 
 final case class Props(values: Map[String, String]) {
   def withSmtpAddress(host: Host, port: SystemPortNumber): Props =

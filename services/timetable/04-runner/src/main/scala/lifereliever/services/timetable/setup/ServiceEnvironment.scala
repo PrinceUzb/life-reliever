@@ -5,7 +5,6 @@ import cats.effect.Async
 import cats.effect.Resource
 import cats.effect.std.Console
 import org.typelevel.log4cats.Logger
-import skunk.Session
 
 import lifereliever.support.database.Migrations
 

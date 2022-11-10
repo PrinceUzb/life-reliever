@@ -4,6 +4,7 @@ import scala.annotation.implicitNotFound
 
 import derevo.Derivation
 import derevo.NewTypeDerivation
+
 import lifereliever.effects.IsUUID
 
 object uuid extends Derivation[IsUUID] with NewTypeDerivation[IsUUID] {

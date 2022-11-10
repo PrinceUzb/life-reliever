@@ -1,6 +1,7 @@
 package lifereliever.support.mailer.data
 
 import cats.data.NonEmptyList
+
 import lifereliever.EmailAddress
 import lifereliever.support.mailer.data.types.Subject
 

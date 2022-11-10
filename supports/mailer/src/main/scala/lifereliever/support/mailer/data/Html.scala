@@ -4,8 +4,9 @@ import java.nio.charset.Charset
 import java.nio.charset.StandardCharsets
 
 import eu.timepit.refined.types.string.NonEmptyString
+
 import lifereliever.support.mailer.data.types.Subtype
-import types.Subtype.HTML
+import lifereliever.support.mailer.data.types.Subtype.HTML
 
 case class Html(
     value: NonEmptyString,

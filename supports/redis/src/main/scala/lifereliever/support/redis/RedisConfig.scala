@@ -2,6 +2,7 @@ package lifereliever.support.redis
 
 import ciris._
 import ciris.refined.refTypeConfigDecoder
+
 import lifereliever.UriAddress
 
 case class RedisConfig(uri: UriAddress)

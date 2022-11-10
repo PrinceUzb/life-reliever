@@ -1,23 +1,26 @@
 package lifereliever.support.services.syntax
 
+import java.time.ZonedDateTime
+
 import cats.MonadThrow
 import cats.effect.Sync
 import cats.effect.kernel.Concurrent
 import cats.implicits._
 import eu.timepit.refined.types.string.NonEmptyString
-import io.circe.{Decoder, Encoder}
+import io.circe.Decoder
+import io.circe.Encoder
 import io.circe.syntax.EncoderOps
-import lifereliever.exception.MultipartDecodeError
-import lifereliever.support.services.http4s.utils.MapConvert
-import lifereliever.support.services.http4s.utils.MapConvert.ValidationResult
 import org.http4s._
 import org.http4s.circe._
 import org.http4s.dsl.Http4sDsl
-import org.http4s.headers.{Authorization, `Content-Type`}
+import org.http4s.headers.Authorization
+import org.http4s.headers.`Content-Type`
 import org.http4s.multipart.Part
 import org.typelevel.log4cats.Logger
 
-import java.time.ZonedDateTime
+import lifereliever.exception.MultipartDecodeError
+import lifereliever.support.services.http4s.utils.MapConvert
+import lifereliever.support.services.http4s.utils.MapConvert.ValidationResult
 
 trait Http4sSyntax {
   implicit def http4SyntaxReqOps[F[_]: JsonDecoder: MonadThrow](

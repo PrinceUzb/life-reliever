@@ -12,16 +12,17 @@ import scala.jdk.CollectionConverters.MapHasAsJava
 import cats.effect.Async
 import cats.effect.kernel.Sync
 import cats.implicits._
+import org.typelevel.log4cats.Logger
+import retry.RetryPolicies.exponentialBackoff
+import retry.RetryPolicies.limitRetries
+import retry.RetryPolicy
+
 import lifereliever.support.mailer.data.Props.SmtpConnectionTimeoutKey
 import lifereliever.support.mailer.data._
 import lifereliever.support.mailer.exception.DeliverFailure.AuthenticationFailed
 import lifereliever.support.mailer.exception.InvalidAddress
 import lifereliever.support.mailer.retries.Retry
 import lifereliever.syntax.refined.commonSyntaxAutoUnwrapV
-import org.typelevel.log4cats.Logger
-import retry.RetryPolicies.exponentialBackoff
-import retry.RetryPolicies.limitRetries
-import retry.RetryPolicy
 
 trait Mailer[F[_]] {
   def send(email: Email): F[Unit]

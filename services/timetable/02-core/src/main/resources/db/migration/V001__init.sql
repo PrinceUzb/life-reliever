@@ -1,21 +1,17 @@
 CREATE SCHEMA IF NOT EXISTS timetable;
-CREATE TABLE IF NOT EXISTS timetable.academy_kind
-(
-    id      UUID PRIMARY KEY,
-    name    VARCHAR NOT NULL UNIQUE,
-    deleted BOOLEAN NOT NULL DEFAULT false
+CREATE TABLE IF NOT EXISTS timetable.academy_kind (
+  name VARCHAR NOT NULL PRIMARY KEY,
+  deleted BOOLEAN NOT NULL DEFAULT false
 );
 
-INSERT INTO timetable.academy_kind VALUES
-('a6270344-5f65-11ed-9b6a-0242ac120002', 'School'),
-('a62707ea-5f65-11ed-9b6a-0242ac120002', 'Collage'),
-('a6270a42-5f65-11ed-9b6a-0242ac120002', 'University');
+INSERT INTO
+  timetable.academy_kind
+VALUES ('School'), ('Collage'), ('University');
 
-CREATE TABLE IF NOT EXISTS timetable.academy
-(
-    id      UUID PRIMARY KEY,
-    name    VARCHAR NOT NULL UNIQUE,
-    kind UUID    NOT NULL
-            CONSTRAINT fk_academy_kind REFERENCES timetable.academy_kind (id) ON UPDATE CASCADE ON DELETE NO ACTION,
+CREATE TABLE IF NOT EXISTS timetable.academy (
+    id UUID PRIMARY KEY,
+    name VARCHAR NOT NULL UNIQUE,
+    kind VARCHAR NOT NULL CONSTRAINT fk_academy_kind REFERENCES timetable.academy_kind (name) ON UPDATE CASCADE ON DELETE NO ACTION,
+    created_at timestamp NOT NULL,
     deleted BOOLEAN NOT NULL DEFAULT false
-);
+  );
