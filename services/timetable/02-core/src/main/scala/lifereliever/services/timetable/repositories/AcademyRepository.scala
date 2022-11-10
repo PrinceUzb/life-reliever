@@ -13,10 +13,12 @@ import lifereliever.services.timetable.domain.Academy
 import lifereliever.services.timetable.domain.AcademyId
 import lifereliever.services.timetable.domain.AcademyKind
 import lifereliever.services.timetable.domain.AcademyName
+import lifereliever.services.timetable.domain.SearchFilters
 import lifereliever.support.skunk.syntax.all._
 
 trait AcademyRepository[F[_]] {
   def create(kind: AcademyKind, name: AcademyName): F[Academy]
+  def get(filter: SearchFilters): F[List[Academy]]
 }
 
 object AcademyRepository {
@@ -32,5 +34,7 @@ object AcademyRepository {
         academy = Academy(id, name, kind, now)
         _ <- insert.execute(academy)
       } yield academy
+
+    override def get(filter: SearchFilters): F[List[Academy]] = ???
   }
 }

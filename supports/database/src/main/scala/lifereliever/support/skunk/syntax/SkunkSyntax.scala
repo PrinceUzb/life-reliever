@@ -157,6 +157,8 @@ final class FragmentOps(af: AppliedFragment) {
         fs.flatten.foldSmash(void" WHERE ", void" AND ", AppliedFragment.empty)
     af |+| filters
   }
+  def whereAndOpt(fs: List[Option[AppliedFragment]]): AppliedFragment =
+    whereAndOpt(fs: _*)
 
   def andOpt(fs: Option[AppliedFragment]*): AppliedFragment = {
     val filters =
