@@ -18,8 +18,5 @@ package object domain {
   @newtype case class AcademyId(value: UUID)
 
   @derive(decoder, encoder, eqv)
-  @newtype case class AcademyKind(value: NonEmptyString)
-
-  @derive(decoder, encoder, eqv)
   @newtype case class AcademyName(value: NonEmptyString)
 }

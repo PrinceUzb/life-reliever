@@ -35,6 +35,9 @@ object AcademyRepository {
         _ <- insert.execute(academy)
       } yield academy
 
-    override def get(filter: SearchFilters): F[List[Academy]] = ???
+    override def get(filter: SearchFilters): F[List[Academy]] = {
+      val query = select(filter)
+      query.fragment.query(codec).queryList(query.argument)
+    }
   }
 }
